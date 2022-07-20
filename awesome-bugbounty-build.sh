@@ -27,7 +27,9 @@ sudo apt-get install python-dnspython -y
 sudo apt-get install git -y
 sudo apt-get install rename -y
 sudo apt-get install xargs -y
-sudo apt-get install golang -y
+#sudo apt-get install golang -y #this go is outdated 
+rm $(which go) ; wget https://go.dev/dl/go1.18.4.linux-amd64.tar.gz ; tar -C /usr/bin -xzf go1.18.4.linux-amd64.tar.gz ; echo "export PATH=$PATH:/usr/local/go/bin
+" >> ~/.bashrc ; echo "export PATH=$PATH:/usr/bin/go/bin" >> ~/.bashrc
 sudo apt install nodejs 
 sudo apt install npm
 sudo apt install python3-pip
@@ -60,6 +62,7 @@ cd ~/Bugbounty/
 # Install amass for find subdomains.
 
 echo -e "${RED}Installation of AMASS OHMYGOD!${ENDCOLOR}"
+go install -v github.com/OWASP/Amass/v3/...@master
 sudo apt-get install amass
 cd ~/Bugbounty/
 echo -e "${GREEN}Successfully${ENDCOLOR}"
@@ -85,6 +88,7 @@ bar::stop
 # Install HTTPX for see if someone is alive.
 
 echo -e "${RED}Installation of HTTPX!${ENDCOLOR}"
+go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
 git clone https://github.com/projectdiscovery/httpx.git
 cd httpx/
 cd cmd/
@@ -116,6 +120,7 @@ bar::stop
 # Install GauPlus for extract WB Machines URL's.
 
 echo -e "${RED}Gauplus for extract wayback machine URL'S${ENDCOLOR}" 
+go install github.com/lc/gau/v2/cmd/gau@latest
 git clone https://github.com/bp0lr/gauplus.git
 cd gauplus/
 go build
@@ -223,6 +228,7 @@ bar::stop
 # Install Arjun
 
 echo -e "${RED}Arjun is powerfull tool for find parameter in a website${ENDCOLOR}"
+pip3 install arjun
 git clone https://github.com/s0md3v/Arjun.git
 cd Arjun/
 chmod +x arjun.py
